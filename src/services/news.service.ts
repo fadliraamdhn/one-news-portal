@@ -1,13 +1,14 @@
 import Parser from "rss-parser";
 import { prisma } from "~/prisma/client";
 import { rssResource } from "~/utils/rssResource";
+import type { GetNewsParams } from "~/types/news.fetch";
 
 const parser = new Parser();
 
 const financeKeywords = [
-    "saham", "ipo", "dividen", "emiten", "ihsg", "pasar modal", "bursa", "sekuritas", "pendanaan", "IHSG",
+    "saham", "ipo", "dividen", "emiten", "ihsg", "pasar modal", "bursa", "sekuritas", "pendanaan", "IHSG", "idx", "BEI",
     "investasi", "obligasi", "reksa dana", "reksadana", "keuangan", "perbankan", "ekonomi", "aksi korporasi",
-    "inflasi", "rupiah", "bea cukai", "pajak", "corporate action", "korporasi", "perusahaan",
+    "inflasi", "rupiah", "bea cukai", "pajak", "corporate action", "korporasi", "perusahaan", "bursa efek", 
 ];
 
 const keywordPattern = new RegExp(`\\b(${financeKeywords.join("|")})\\b`, "i");
@@ -107,4 +108,62 @@ function extractImageFromContent(content?: string): string | null {
     if (!content) return null;
     const match = content.match(/<img[^>]+src="([^">]+)"/);
     return match && match[1] ? match[1] : null;
+}
+
+export async function getAllNews({
+    sourceId,
+    date,
+    search,
+    sortOrder = "desc",
+    page = "1",
+    limit = "25",
+}: GetNewsParams) {
+    const pageNum = Number(page) || 1
+    const limitNum = Number(limit) || 25
+    const skip = (pageNum - 1) * limitNum
+
+    const where: {
+        sourceId?: number
+        pubDate?: { gte?: Date; lt?: Date }
+        OR?: { title?: { contains: string; mode: "insensitive" }; snippet?: { contains: string; mode: "insensitive" }; content?: { contains: string; mode: "insensitive" } }[]
+    } = {}
+
+    if (sourceId && !isNaN(Number(sourceId))) {
+        where.sourceId = Number(sourceId)
+    }
+
+    if (date) {
+        const start = new Date(`${date}T00:00:00+07:00`)
+        const end = new Date(`${date}T23:59:59+07:00`)
+
+        where.pubDate = { gte: start, lt: end }
+    }
+
+    if (search && search.trim().length > 0) {
+        where.OR = [
+            { title: { contains: search, mode: "insensitive" } },
+            { snippet: { contains: search, mode: "insensitive" } },
+            { content: { contains: search, mode: "insensitive" } },
+        ]
+    }
+
+    const [data, total] = await Promise.all([
+        prisma.article.findMany({
+            where,
+            orderBy: { pubDate: "desc" },
+            skip,
+            take: limitNum,
+            include: {
+                source: { select: { id: true, name: true, category: true } },
+            },
+        }),
+        prisma.article.count({ where }),
+    ])
+
+    return {
+        total,
+        page: pageNum,
+        limit: limitNum,
+        data,
+    }
 }
