@@ -3,7 +3,7 @@ import { fetchAndCategorizeNews } from "~/services/news.service";
 import { logger } from "~/utils/logger";
 import { AppError } from "~/utils/appError";
 
-cron.schedule("*/15 * * * *", async () => {
+cron.schedule("*/30 * * * *", async () => {
     logger.info("[Cron] Memulai fetch berita...");
     try {
         await fetchAndCategorizeNews();

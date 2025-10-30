@@ -45,24 +45,20 @@ model Company {
   id          Int        @id @default(autoincrement())
   code        String     @unique
   name        String
-  sector      String?
-  subsector   String?
   listingDate DateTime?
-  website     String?
-  address     String?
   document    Document[]
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 }
 
 model Document {
-  id        Int      @id @default(autoincrement())
-  title     String
-  category  String
-  link      String
-  date      DateTime
-  company   Company? @relation(fields: [companyId], references: [id])
-  companyId Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  category    String
+  link        String
+  date        DateTime
+  company     Company? @relation(fields: [companyCode], references: [code])
+  companyCode String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

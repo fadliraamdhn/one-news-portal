@@ -3518,11 +3518,7 @@ export namespace Prisma {
     id: number | null
     code: string | null
     name: string | null
-    sector: string | null
-    subsector: string | null
     listingDate: Date | null
-    website: string | null
-    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3531,11 +3527,7 @@ export namespace Prisma {
     id: number | null
     code: string | null
     name: string | null
-    sector: string | null
-    subsector: string | null
     listingDate: Date | null
-    website: string | null
-    address: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3544,11 +3536,7 @@ export namespace Prisma {
     id: number
     code: number
     name: number
-    sector: number
-    subsector: number
     listingDate: number
-    website: number
-    address: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3567,11 +3555,7 @@ export namespace Prisma {
     id?: true
     code?: true
     name?: true
-    sector?: true
-    subsector?: true
     listingDate?: true
-    website?: true
-    address?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3580,11 +3564,7 @@ export namespace Prisma {
     id?: true
     code?: true
     name?: true
-    sector?: true
-    subsector?: true
     listingDate?: true
-    website?: true
-    address?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3593,11 +3573,7 @@ export namespace Prisma {
     id?: true
     code?: true
     name?: true
-    sector?: true
-    subsector?: true
     listingDate?: true
-    website?: true
-    address?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3693,11 +3669,7 @@ export namespace Prisma {
     id: number
     code: string
     name: string
-    sector: string | null
-    subsector: string | null
     listingDate: Date | null
-    website: string | null
-    address: string | null
     createdAt: Date
     updatedAt: Date
     _count: CompanyCountAggregateOutputType | null
@@ -3725,11 +3697,7 @@ export namespace Prisma {
     id?: boolean
     code?: boolean
     name?: boolean
-    sector?: boolean
-    subsector?: boolean
     listingDate?: boolean
-    website?: boolean
-    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     document?: boolean | Company$documentArgs<ExtArgs>
@@ -3740,11 +3708,7 @@ export namespace Prisma {
     id?: boolean
     code?: boolean
     name?: boolean
-    sector?: boolean
-    subsector?: boolean
     listingDate?: boolean
-    website?: boolean
-    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["company"]>
@@ -3753,11 +3717,7 @@ export namespace Prisma {
     id?: boolean
     code?: boolean
     name?: boolean
-    sector?: boolean
-    subsector?: boolean
     listingDate?: boolean
-    website?: boolean
-    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["company"]>
@@ -3766,16 +3726,12 @@ export namespace Prisma {
     id?: boolean
     code?: boolean
     name?: boolean
-    sector?: boolean
-    subsector?: boolean
     listingDate?: boolean
-    website?: boolean
-    address?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "sector" | "subsector" | "listingDate" | "website" | "address" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
+  export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "listingDate" | "createdAt" | "updatedAt", ExtArgs["result"]["company"]>
   export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     document?: boolean | Company$documentArgs<ExtArgs>
     _count?: boolean | CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -3792,11 +3748,7 @@ export namespace Prisma {
       id: number
       code: string
       name: string
-      sector: string | null
-      subsector: string | null
       listingDate: Date | null
-      website: string | null
-      address: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["company"]>
@@ -4226,11 +4178,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Company", 'Int'>
     readonly code: FieldRef<"Company", 'String'>
     readonly name: FieldRef<"Company", 'String'>
-    readonly sector: FieldRef<"Company", 'String'>
-    readonly subsector: FieldRef<"Company", 'String'>
     readonly listingDate: FieldRef<"Company", 'DateTime'>
-    readonly website: FieldRef<"Company", 'String'>
-    readonly address: FieldRef<"Company", 'String'>
     readonly createdAt: FieldRef<"Company", 'DateTime'>
     readonly updatedAt: FieldRef<"Company", 'DateTime'>
   }
@@ -4677,12 +4625,10 @@ export namespace Prisma {
 
   export type DocumentAvgAggregateOutputType = {
     id: number | null
-    companyId: number | null
   }
 
   export type DocumentSumAggregateOutputType = {
     id: number | null
-    companyId: number | null
   }
 
   export type DocumentMinAggregateOutputType = {
@@ -4691,7 +4637,7 @@ export namespace Prisma {
     category: string | null
     link: string | null
     date: Date | null
-    companyId: number | null
+    companyCode: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4702,7 +4648,7 @@ export namespace Prisma {
     category: string | null
     link: string | null
     date: Date | null
-    companyId: number | null
+    companyCode: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4713,7 +4659,7 @@ export namespace Prisma {
     category: number
     link: number
     date: number
-    companyId: number
+    companyCode: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4722,12 +4668,10 @@ export namespace Prisma {
 
   export type DocumentAvgAggregateInputType = {
     id?: true
-    companyId?: true
   }
 
   export type DocumentSumAggregateInputType = {
     id?: true
-    companyId?: true
   }
 
   export type DocumentMinAggregateInputType = {
@@ -4736,7 +4680,7 @@ export namespace Prisma {
     category?: true
     link?: true
     date?: true
-    companyId?: true
+    companyCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4747,7 +4691,7 @@ export namespace Prisma {
     category?: true
     link?: true
     date?: true
-    companyId?: true
+    companyCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4758,7 +4702,7 @@ export namespace Prisma {
     category?: true
     link?: true
     date?: true
-    companyId?: true
+    companyCode?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4856,7 +4800,7 @@ export namespace Prisma {
     category: string
     link: string
     date: Date
-    companyId: number
+    companyCode: string
     createdAt: Date
     updatedAt: Date
     _count: DocumentCountAggregateOutputType | null
@@ -4886,7 +4830,7 @@ export namespace Prisma {
     category?: boolean
     link?: boolean
     date?: boolean
-    companyId?: boolean
+    companyCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | Document$companyArgs<ExtArgs>
@@ -4898,7 +4842,7 @@ export namespace Prisma {
     category?: boolean
     link?: boolean
     date?: boolean
-    companyId?: boolean
+    companyCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | Document$companyArgs<ExtArgs>
@@ -4910,7 +4854,7 @@ export namespace Prisma {
     category?: boolean
     link?: boolean
     date?: boolean
-    companyId?: boolean
+    companyCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     company?: boolean | Document$companyArgs<ExtArgs>
@@ -4922,12 +4866,12 @@ export namespace Prisma {
     category?: boolean
     link?: boolean
     date?: boolean
-    companyId?: boolean
+    companyCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type DocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "category" | "link" | "date" | "companyId" | "createdAt" | "updatedAt", ExtArgs["result"]["document"]>
+  export type DocumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "category" | "link" | "date" | "companyCode" | "createdAt" | "updatedAt", ExtArgs["result"]["document"]>
   export type DocumentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     company?: boolean | Document$companyArgs<ExtArgs>
   }
@@ -4949,7 +4893,7 @@ export namespace Prisma {
       category: string
       link: string
       date: Date
-      companyId: number
+      companyCode: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["document"]>
@@ -5381,7 +5325,7 @@ export namespace Prisma {
     readonly category: FieldRef<"Document", 'String'>
     readonly link: FieldRef<"Document", 'String'>
     readonly date: FieldRef<"Document", 'DateTime'>
-    readonly companyId: FieldRef<"Document", 'Int'>
+    readonly companyCode: FieldRef<"Document", 'String'>
     readonly createdAt: FieldRef<"Document", 'DateTime'>
     readonly updatedAt: FieldRef<"Document", 'DateTime'>
   }
@@ -5865,11 +5809,7 @@ export namespace Prisma {
     id: 'id',
     code: 'code',
     name: 'name',
-    sector: 'sector',
-    subsector: 'subsector',
     listingDate: 'listingDate',
-    website: 'website',
-    address: 'address',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5883,7 +5823,7 @@ export namespace Prisma {
     category: 'category',
     link: 'link',
     date: 'date',
-    companyId: 'companyId',
+    companyCode: 'companyCode',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6140,11 +6080,7 @@ export namespace Prisma {
     id?: IntFilter<"Company"> | number
     code?: StringFilter<"Company"> | string
     name?: StringFilter<"Company"> | string
-    sector?: StringNullableFilter<"Company"> | string | null
-    subsector?: StringNullableFilter<"Company"> | string | null
     listingDate?: DateTimeNullableFilter<"Company"> | Date | string | null
-    website?: StringNullableFilter<"Company"> | string | null
-    address?: StringNullableFilter<"Company"> | string | null
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
     document?: DocumentListRelationFilter
@@ -6154,11 +6090,7 @@ export namespace Prisma {
     id?: SortOrder
     code?: SortOrder
     name?: SortOrder
-    sector?: SortOrderInput | SortOrder
-    subsector?: SortOrderInput | SortOrder
     listingDate?: SortOrderInput | SortOrder
-    website?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     document?: DocumentOrderByRelationAggregateInput
@@ -6171,11 +6103,7 @@ export namespace Prisma {
     OR?: CompanyWhereInput[]
     NOT?: CompanyWhereInput | CompanyWhereInput[]
     name?: StringFilter<"Company"> | string
-    sector?: StringNullableFilter<"Company"> | string | null
-    subsector?: StringNullableFilter<"Company"> | string | null
     listingDate?: DateTimeNullableFilter<"Company"> | Date | string | null
-    website?: StringNullableFilter<"Company"> | string | null
-    address?: StringNullableFilter<"Company"> | string | null
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
     document?: DocumentListRelationFilter
@@ -6185,11 +6113,7 @@ export namespace Prisma {
     id?: SortOrder
     code?: SortOrder
     name?: SortOrder
-    sector?: SortOrderInput | SortOrder
-    subsector?: SortOrderInput | SortOrder
     listingDate?: SortOrderInput | SortOrder
-    website?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CompanyCountOrderByAggregateInput
@@ -6206,11 +6130,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Company"> | number
     code?: StringWithAggregatesFilter<"Company"> | string
     name?: StringWithAggregatesFilter<"Company"> | string
-    sector?: StringNullableWithAggregatesFilter<"Company"> | string | null
-    subsector?: StringNullableWithAggregatesFilter<"Company"> | string | null
     listingDate?: DateTimeNullableWithAggregatesFilter<"Company"> | Date | string | null
-    website?: StringNullableWithAggregatesFilter<"Company"> | string | null
-    address?: StringNullableWithAggregatesFilter<"Company"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
   }
@@ -6224,7 +6144,7 @@ export namespace Prisma {
     category?: StringFilter<"Document"> | string
     link?: StringFilter<"Document"> | string
     date?: DateTimeFilter<"Document"> | Date | string
-    companyId?: IntFilter<"Document"> | number
+    companyCode?: StringFilter<"Document"> | string
     createdAt?: DateTimeFilter<"Document"> | Date | string
     updatedAt?: DateTimeFilter<"Document"> | Date | string
     company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
@@ -6236,7 +6156,7 @@ export namespace Prisma {
     category?: SortOrder
     link?: SortOrder
     date?: SortOrder
-    companyId?: SortOrder
+    companyCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     company?: CompanyOrderByWithRelationInput
@@ -6251,7 +6171,7 @@ export namespace Prisma {
     category?: StringFilter<"Document"> | string
     link?: StringFilter<"Document"> | string
     date?: DateTimeFilter<"Document"> | Date | string
-    companyId?: IntFilter<"Document"> | number
+    companyCode?: StringFilter<"Document"> | string
     createdAt?: DateTimeFilter<"Document"> | Date | string
     updatedAt?: DateTimeFilter<"Document"> | Date | string
     company?: XOR<CompanyNullableScalarRelationFilter, CompanyWhereInput> | null
@@ -6263,7 +6183,7 @@ export namespace Prisma {
     category?: SortOrder
     link?: SortOrder
     date?: SortOrder
-    companyId?: SortOrder
+    companyCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: DocumentCountOrderByAggregateInput
@@ -6282,7 +6202,7 @@ export namespace Prisma {
     category?: StringWithAggregatesFilter<"Document"> | string
     link?: StringWithAggregatesFilter<"Document"> | string
     date?: DateTimeWithAggregatesFilter<"Document"> | Date | string
-    companyId?: IntWithAggregatesFilter<"Document"> | number
+    companyCode?: StringWithAggregatesFilter<"Document"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Document"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Document"> | Date | string
   }
@@ -6455,11 +6375,7 @@ export namespace Prisma {
   export type CompanyCreateInput = {
     code: string
     name: string
-    sector?: string | null
-    subsector?: string | null
     listingDate?: Date | string | null
-    website?: string | null
-    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     document?: DocumentCreateNestedManyWithoutCompanyInput
@@ -6469,11 +6385,7 @@ export namespace Prisma {
     id?: number
     code: string
     name: string
-    sector?: string | null
-    subsector?: string | null
     listingDate?: Date | string | null
-    website?: string | null
-    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     document?: DocumentUncheckedCreateNestedManyWithoutCompanyInput
@@ -6482,11 +6394,7 @@ export namespace Prisma {
   export type CompanyUpdateInput = {
     code?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    sector?: NullableStringFieldUpdateOperationsInput | string | null
-    subsector?: NullableStringFieldUpdateOperationsInput | string | null
     listingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     document?: DocumentUpdateManyWithoutCompanyNestedInput
@@ -6496,11 +6404,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    sector?: NullableStringFieldUpdateOperationsInput | string | null
-    subsector?: NullableStringFieldUpdateOperationsInput | string | null
     listingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     document?: DocumentUncheckedUpdateManyWithoutCompanyNestedInput
@@ -6510,11 +6414,7 @@ export namespace Prisma {
     id?: number
     code: string
     name: string
-    sector?: string | null
-    subsector?: string | null
     listingDate?: Date | string | null
-    website?: string | null
-    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6522,11 +6422,7 @@ export namespace Prisma {
   export type CompanyUpdateManyMutationInput = {
     code?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    sector?: NullableStringFieldUpdateOperationsInput | string | null
-    subsector?: NullableStringFieldUpdateOperationsInput | string | null
     listingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6535,11 +6431,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    sector?: NullableStringFieldUpdateOperationsInput | string | null
-    subsector?: NullableStringFieldUpdateOperationsInput | string | null
     listingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6560,7 +6452,7 @@ export namespace Prisma {
     category: string
     link: string
     date: Date | string
-    companyId: number
+    companyCode: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6581,7 +6473,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyId?: IntFieldUpdateOperationsInput | number
+    companyCode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6592,7 +6484,7 @@ export namespace Prisma {
     category: string
     link: string
     date: Date | string
-    companyId: number
+    companyCode: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6612,7 +6504,7 @@ export namespace Prisma {
     category?: StringFieldUpdateOperationsInput | string
     link?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    companyId?: IntFieldUpdateOperationsInput | number
+    companyCode?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6876,11 +6768,7 @@ export namespace Prisma {
     id?: SortOrder
     code?: SortOrder
     name?: SortOrder
-    sector?: SortOrder
-    subsector?: SortOrder
     listingDate?: SortOrder
-    website?: SortOrder
-    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6893,11 +6781,7 @@ export namespace Prisma {
     id?: SortOrder
     code?: SortOrder
     name?: SortOrder
-    sector?: SortOrder
-    subsector?: SortOrder
     listingDate?: SortOrder
-    website?: SortOrder
-    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6906,11 +6790,7 @@ export namespace Prisma {
     id?: SortOrder
     code?: SortOrder
     name?: SortOrder
-    sector?: SortOrder
-    subsector?: SortOrder
     listingDate?: SortOrder
-    website?: SortOrder
-    address?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6944,14 +6824,13 @@ export namespace Prisma {
     category?: SortOrder
     link?: SortOrder
     date?: SortOrder
-    companyId?: SortOrder
+    companyCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type DocumentAvgOrderByAggregateInput = {
     id?: SortOrder
-    companyId?: SortOrder
   }
 
   export type DocumentMaxOrderByAggregateInput = {
@@ -6960,7 +6839,7 @@ export namespace Prisma {
     category?: SortOrder
     link?: SortOrder
     date?: SortOrder
-    companyId?: SortOrder
+    companyCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6971,14 +6850,13 @@ export namespace Prisma {
     category?: SortOrder
     link?: SortOrder
     date?: SortOrder
-    companyId?: SortOrder
+    companyCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type DocumentSumOrderByAggregateInput = {
     id?: SortOrder
-    companyId?: SortOrder
   }
 
   export type ArticleCreateNestedManyWithoutSourceInput = {
@@ -7465,7 +7343,7 @@ export namespace Prisma {
     category?: StringFilter<"Document"> | string
     link?: StringFilter<"Document"> | string
     date?: DateTimeFilter<"Document"> | Date | string
-    companyId?: IntFilter<"Document"> | number
+    companyCode?: StringFilter<"Document"> | string
     createdAt?: DateTimeFilter<"Document"> | Date | string
     updatedAt?: DateTimeFilter<"Document"> | Date | string
   }
@@ -7473,11 +7351,7 @@ export namespace Prisma {
   export type CompanyCreateWithoutDocumentInput = {
     code: string
     name: string
-    sector?: string | null
-    subsector?: string | null
     listingDate?: Date | string | null
-    website?: string | null
-    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7486,11 +7360,7 @@ export namespace Prisma {
     id?: number
     code: string
     name: string
-    sector?: string | null
-    subsector?: string | null
     listingDate?: Date | string | null
-    website?: string | null
-    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7514,11 +7384,7 @@ export namespace Prisma {
   export type CompanyUpdateWithoutDocumentInput = {
     code?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    sector?: NullableStringFieldUpdateOperationsInput | string | null
-    subsector?: NullableStringFieldUpdateOperationsInput | string | null
     listingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7527,11 +7393,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    sector?: NullableStringFieldUpdateOperationsInput | string | null
-    subsector?: NullableStringFieldUpdateOperationsInput | string | null
     listingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    website?: NullableStringFieldUpdateOperationsInput | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

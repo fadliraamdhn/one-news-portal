@@ -148,11 +148,7 @@ exports.Prisma.CompanyScalarFieldEnum = {
   id: 'id',
   code: 'code',
   name: 'name',
-  sector: 'sector',
-  subsector: 'subsector',
   listingDate: 'listingDate',
-  website: 'website',
-  address: 'address',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -163,7 +159,7 @@ exports.Prisma.DocumentScalarFieldEnum = {
   category: 'category',
   link: 'link',
   date: 'date',
-  companyId: 'companyId',
+  companyCode: 'companyCode',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

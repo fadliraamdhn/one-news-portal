@@ -29,47 +29,59 @@ export interface CategorizedArticles {
     general: NormalizedArticle[];
 }
 
-export async function fetchAndCategorizeNews(): Promise<CategorizedArticles> {
+export async function fetchAndCategorizeNews(customParser?: Parser): Promise<CategorizedArticles> {
+    const usedParser = customParser ?? parser;
     const categorized: CategorizedArticles = { finance: [], general: [] };
 
-    for (const source of rssResource) {
-        try {
-            const feed = await parser.parseURL(source.rssUrl);
+    const results = await Promise.all(
+        rssResource.map(async (source) => {
+            try {
+                const feed = await usedParser.parseURL(source.rssUrl);
 
-            const filteredItems = source.category === "finance"
-                ? feed.items
-                : feed.items.filter((item) =>
-                    keywordPattern.test(
-                        `${item.title ?? ""} ${item.contentSnippet ?? ""} ${item.summary ?? ""}`
-                    )
-                );
+                const filteredItems =
+                    source.category === "finance"
+                        ? feed.items
+                        : feed.items.filter((item) =>
+                              keywordPattern.test(
+                                  `${item.title ?? ""} ${item.contentSnippet ?? ""} ${item.summary ?? ""}`
+                              )
+                          );
 
-            const normalized: NormalizedArticle[] = filteredItems
-                .filter((item): item is Required<typeof item> => !!item.link)
-                .map((item) => ({
-                    source: source.name,
-                    category: source.category,
-                    title: item.title ?? "",
-                    link: item.link,
-                    pubDate: item.isoDate || item.pubDate || new Date().toISOString(),
-                    snippet: item.contentSnippet || item.summary || "",
-                    imageUrl:
-                        (item.enclosure && item.enclosure.url) ||
-                        extractImageFromContent(item["content:encoded"] || item.content) ||
-                        null,
-                    content: item["content:encoded"] || item.content || null,
-                }));
+                const normalized: NormalizedArticle[] = filteredItems
+                    .filter((item): item is Required<typeof item> => !!item.link)
+                    .map((item) => ({
+                        source: source.name,
+                        category: source.category,
+                        title: item.title ?? "",
+                        link: item.link,
+                        pubDate: item.isoDate || item.pubDate || new Date().toISOString(),
+                        snippet: item.contentSnippet || item.summary || "",
+                        imageUrl:
+                            (item.enclosure && item.enclosure.url) ||
+                            extractImageFromContent(item["content:encoded"] || item.content) ||
+                            null,
+                        content: item["content:encoded"] || item.content || null,
+                    }));
 
-            if (source.category === "finance") {
-                categorized.finance.push(...normalized);
-            } else {
-                categorized.general.push(...normalized);
+                await saveArticlesToDatabase(normalized, source);
+
+                return { success: true as const, source, normalized };
+            } catch (error) {
+                const err = error as Error;
+                console.error(`❌ Gagal parsing ${source.name}: ${err.message}`);
+                return { success: false as const, source, error: err };
             }
+        })
+    );
 
-            await saveArticlesToDatabase(normalized, source);
-        } catch (error) {
-            const err = error as Error;
-            throw new Error(`Gagal parsing ${source.name}: ${err.message}`);
+    for (const result of results) {
+        if (result.success) {
+            const { source, normalized } = result;
+            if (source.category === "finance") {
+                categorized.finance.push(...(normalized ?? []));
+            } else {
+                categorized.general.push(...(normalized ?? []));
+            }
         }
     }
 

@@ -83,3 +83,101 @@ The table `public.Source` does not exist in the current database.
 2025-10-18 13:46:03 [[31merror[39m] [Cron Error] Gagal parsing viva: Request timed out after 60000ms
 2025-10-18 14:01:00 [[31merror[39m] [Cron Error] Gagal parsing cnn: Request timed out after 60000ms
 2025-10-18 14:31:00 [[31merror[39m] [Cron Error] Gagal parsing cnbc: Request timed out after 60000ms
+2025-10-20 12:01:04 [[31merror[39m] [Cron Error] Gagal parsing viva: Request timed out after 60000ms
+2025-10-23 15:31:02 [[31merror[39m] [Cron Error] Gagal parsing sindonews: Request timed out after 60000ms
+2025-10-30 10:17:26 [[31merror[39m] [GET] /document?page=1&date=20211 - 
+Invalid `prisma.document.findMany()` invocation in
+C:\Users\Fadli Ramadhan\Bootcamp Dumbways\one-news-paper\one-news-portal\src\services\document.service.ts:29:25
+
+  26 }
+  27 
+  28 const [documents, total] = await Promise.all([
+→ 29     prisma.document.findMany({
+           where: {
+             category: "Laporan Keuangan",
+             date: {
+               gte: new Date("Invalid Date"),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~
+               lte: new Date("Invalid Date")
+             }
+           },
+           orderBy: {
+             companyCode: "asc"
+           },
+           skip: 0,
+           take: 25,
+           include: {
+             company: {
+               select: {
+                 code: true,
+                 name: true
+               }
+             }
+           }
+         })
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.
+2025-10-30 10:17:28 [[31merror[39m] [GET] /document?page=1&date=20221 - 
+Invalid `prisma.document.findMany()` invocation in
+C:\Users\Fadli Ramadhan\Bootcamp Dumbways\one-news-paper\one-news-portal\src\services\document.service.ts:29:25
+
+  26 }
+  27 
+  28 const [documents, total] = await Promise.all([
+→ 29     prisma.document.findMany({
+           where: {
+             category: "Laporan Keuangan",
+             date: {
+               gte: new Date("Invalid Date"),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~
+               lte: new Date("Invalid Date")
+             }
+           },
+           orderBy: {
+             companyCode: "asc"
+           },
+           skip: 0,
+           take: 25,
+           include: {
+             company: {
+               select: {
+                 code: true,
+                 name: true
+               }
+             }
+           }
+         })
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.
+2025-10-30 10:17:29 [[31merror[39m] [GET] /document?page=1&date=20211 - 
+Invalid `prisma.document.findMany()` invocation in
+C:\Users\Fadli Ramadhan\Bootcamp Dumbways\one-news-paper\one-news-portal\src\services\document.service.ts:29:25
+
+  26 }
+  27 
+  28 const [documents, total] = await Promise.all([
+→ 29     prisma.document.findMany({
+           where: {
+             category: "Laporan Keuangan",
+             date: {
+               gte: new Date("Invalid Date"),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~
+               lte: new Date("Invalid Date")
+             }
+           },
+           orderBy: {
+             companyCode: "asc"
+           },
+           skip: 0,
+           take: 25,
+           include: {
+             company: {
+               select: {
+                 code: true,
+                 name: true
+               }
+             }
+           }
+         })
+
+Invalid value for argument `gte`: Provided Date object is invalid. Expected Date.

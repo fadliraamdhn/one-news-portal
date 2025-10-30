@@ -45,11 +45,7 @@ model Company {
   id          Int        @id @default(autoincrement())
   code        String     @unique
   name        String
-  sector      String?
-  subsector   String?
-  listingDate DateTime?
-  website     String?
-  address     String?
+  listingDate   DateTime?
   document    Document[]
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -61,8 +57,8 @@ model Document {
   category  String
   link      String
   date      DateTime
-  company   Company? @relation(fields: [companyId], references: [id])
-  companyId Int
+  company   Company? @relation(fields: [companyCode], references: [code])
+  companyCode String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
