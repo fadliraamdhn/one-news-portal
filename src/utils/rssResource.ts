@@ -7,4 +7,5 @@ export const rssResource = [
     { name: "antaranews", url: "https://en.antaranews.com/", rssUrl: "https://en.antaranews.com/rss/business-investment.xml", category: "finance"},
     { name: "viva", url: "https://www.viva.co.id/", rssUrl: "https://www.viva.co.id/get/all", category: "general"},
     { name: "sindonews", url: "https://www.sindonews.com/", rssUrl: "https://www.sindonews.com/feed", category: "general"},
+    { name: "idx", url: "https://www.idxchannel.com", rssUrl: "https://www.idxchannel.com/rss", category: "finance"},
 ]
