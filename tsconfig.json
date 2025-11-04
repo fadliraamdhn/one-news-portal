@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": "./src",
+    "outDir": "dist",
     
     // Environment setup & latest features
     "lib": ["ESNext"],
